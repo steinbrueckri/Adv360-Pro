@@ -2,12 +2,7 @@
   "keyboard": "adv360",
   "keymap": "default",
   "layout": "LAYOUT",
-  "layer_names": [
-    "base",
-    "keypad",
-    "fn",
-    "mod"
-  ],
+  "layer_names": ["base", "keypad", "fn", "mod"],
   "layers": [
     [
       "&kp EQUAL ", "&kp N1    ", "&kp N2   ", "&kp N3   ", "&kp N4     ", "&kp N5 ", "&tog 1                                                                            ", "&mo 3  ", "&kp N6 ", "&kp N7 ", "&kp N8    ", "&kp N9   ", "&kp N0   ", "&kp MINUS",
