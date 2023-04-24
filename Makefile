@@ -11,13 +11,18 @@ endif
 
 .PHONY: all clean
 
+get_macros:
+	eval $(op signin --account pixel-combo.1password.com) && op item get fnsq7vwjy6hwmdf6puikiuo5na --field "notesPlain" --format json | jq -r .value > config/macros.dtsi
+
 all:
+	make get_macros
 	$(DOCKER) build --tag zmk --file Dockerfile .
 	$(DOCKER) run --rm -it --name zmk \
 		-v $(PWD)/firmware:/app/firmware$(SELINUX1) \
 		-v $(PWD)/config:/app/config:ro$(SELINUX2) \
 		-e TIMESTAMP=$(TIMESTAMP) \
 		zmk
+	git checkout config/macros.dtsi
 
 clean:
 	rm -f firmware/*.uf2
