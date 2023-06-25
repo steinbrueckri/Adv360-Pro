@@ -43,7 +43,7 @@
    &kp TAB      &kp Q   &kp W     &kp E      &kp R   &kp T               &kp F21                                                                                         &kp F22   &kp Y     &kp U      &kp I     &kp O     &kp P   &kp BSLH
    &kp ESC      &kp A   &kp S     &kp D      &kp F   &kp G            &macro_pw1  &kp LEFT_COMMAND    &kp LALT                  &kp RIGHT_COMMAND  &kp RIGHT_COMMAND  &macro_pw2   &kp H     &kp J      &kp K     &kp L  &kp SEMI    &kp SQT
  &kp LSHFT      &kp Z   &kp X     &kp C      &kp V   &kp B                                          &kp ESCAPE                          &kp PG_UP                                  &kp N     &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp RSHFT
-     &mo 2  &kp GRAVE   &none  &kp LEFT  &kp RIGHT                      &kp BSPC        &kp ESCAPE   &kp LCTRL                             &kp AT          &kp ENTER   &kp SPACE          &kp DOWN     &kp UP  &kp LBKT  &kp RBKT      &mo 2
+     &mo 2  &kp GRAVE   &none  &kp LEFT  &kp RIGHT                      &kp BSPC        &kp ESCAPE   &kp LCTRL                             &kp RIGHT_ALT          &kp ENTER   &kp SPACE          &kp DOWN     &kp UP  &kp LBKT  &kp RBKT      &mo 2
             >;
         };
 
