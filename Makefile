@@ -13,7 +13,7 @@ endif
 .PHONY: all left clean_firmware clean_image clean
 
 get_macros:
-	eval $(op signin --account pixel-combo.1password.com) && op item get fnsq7vwjy6hwmdf6puikiuo5na --field "notesPlain" --format json | jq -r .value >> config/macros.dtsi
+	eval $(op signin --account pixel-combo.1password.com) && op --account pixel-combo.1password.com item get fnsq7vwjy6hwmdf6puikiuo5na --field "notesPlain" --format json | jq -r .value > config/macros.dtsi
 
 all:
 	$(DOCKER) build --tag zmk --file Dockerfile .
