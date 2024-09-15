@@ -9,10 +9,13 @@ SELINUX1 := :z
 SELINUX2 := ,z
 endif
 
-.PHONY: all left clean_firmware clean_image clean
+.PHONY: all left clean_firmware clean_image clean get_macros clean_macros
 
 get_macros:
 	eval $(op signin --account pixel-combo.1password.com) && op --account pixel-combo.1password.com item get fnsq7vwjy6hwmdf6puikiuo5na --field "notesPlain" --format json | jq -r .value > config/macros.dtsi
+
+clean_macros:
+	git checkout config/macros.dtsi
 
 all:
 	make get_macros
@@ -45,4 +48,4 @@ clean_firmware:
 clean_image:
 	$(DOCKER) image rm zmk docker.io/zmkfirmware/zmk-build-arm:stable
 
-clean: clean_firmware clean_image
+clean: clean_macros clean_firmware clean_image
