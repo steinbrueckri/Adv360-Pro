@@ -49,3 +49,7 @@ clean_image:
 	$(DOCKER) image rm zmk docker.io/zmkfirmware/zmk-build-arm:stable
 
 clean: clean_macros clean_firmware clean_image
+
+sync_upstream:
+	@if ! git remote | grep -q upstream; then git remote add upstream git@github.com:KinesisCorporation/Adv360-Pro-ZMK.git; fi
+	git pull upstream V3.0
