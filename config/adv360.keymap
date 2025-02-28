@@ -7,7 +7,7 @@
 
 / {
     behaviors {
-        #include "macros.dtsi"
+      #include "macros.dtsi"
       #include "version.dtsi"
 
         hm: homerow_mods {
@@ -21,23 +21,7 @@
         };
     };
 
-    macros {
-        macro_pw1: macro_pw1 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&none>;
-            label = "MACRO_PW1";
-        };
-
-        macro_pw2: macro_pw2 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&none>;
-            label = "MACRO_PW2";
-        };
-    };
-
-    keymap {
+        keymap {
         compatible = "zmk,keymap";
 
         default_layer {
