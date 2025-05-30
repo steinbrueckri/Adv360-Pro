@@ -1,46 +1,66 @@
 # Kinesis Advantage 360 Pro
 
-## Building the firmware
+## Prerequisites
 
-1. Execute `make` to build firmware for both halves or `make left` to only build firmware for the left hand side.
-2. Check the `firmware` directory for the latest firmware build. The first part of the filename is the timestamp when the firmware was built.
+- Ensure you have [Docker](https://www.docker.com/products/docker-desktop) installed and running on your machine.
+- Additional tools may be necessary; see [requirements](https://kinesis-ergo.com/support/kb360pro/#requirements).
+
+## Building the Firmware
+
+Execute the following commands in your terminal:
+
+- **Build Firmware for Both Halves:**
+  ```sh
+  make
+  ```
+- **Build Only for Left Side:**
+  ```sh
+  make left
+  ```
+
+After building, check the `firmware` directory for the latest build files. Filenames start with a timestamp indicating the build time.
 
 ### Cleanup
 
-The built docker container and compiled firmware files can be deleted with `make clean`. This might be necessary if you updated your fork from V2.0 to V3.0 and are encountering build failures.
+To delete the built Docker container and compiled firmware files, use:
+```sh
+make clean
+```
+Use `make clean_firmware` to clean only the firmware files without removing the Docker container. Alternatively, `make clean_image` removes the Docker container while keeping firmware files intact.
 
-Creating the docker container takes some time. Therefore `make clean_firmware` can be used to only clean firmware without removing the docker container. Similarly `make clean_image` can be used to remove the docker container without removing compiled firmware files.
+## Flashing Firmware
 
-## Flashing firmware
+Follow the programming instructions detailed in the [Quick Start Guide](https://kinesis-ergo.com/wp-content/uploads/Advantage360-Professional-QSG-v8-25-22.pdf).
 
-Follow the programming instruction on page 8 of the [Quick Start Guide](https://kinesis-ergo.com/wp-content/uploads/Advantage360-Professional-QSG-v8-25-22.pdf) to flash the firmware.
+### Steps to Flash
 
-### Overview
+1. **Extract Firmware**: 
+   - From the GitHub build job archive (cloud builder) or the `firmware` folder (local build).
 
-1. Extract the firmwares from the archive downloaded from the GitHub build job (If using the cloud builder) or the firmware folder (If building locally).
-1. Connect the left side keyboard to USB.
-1. Press Mod+macro1 to put the left side into bootloader mode; it should attach to your computer as a USB drive.
-1. Copy `left.uf2` to the USB drive and it will disconnect.
-1. Power off both keyboards (by unplugging them and making sure the switches are off).
-1. Turn on the left side keyboard with the switch.
-1. Connect the right side keyboard to USB to power it on.
-1. Press Mod+macro3 to put the right side into bootloader mode to attach it as a USB drive.
-1. Copy `right.uf2` to the mounted drive.
-1. Unplug the right side keyboard and turn it back on.
-1. Enjoy!
+2. **Prepare Left Side**:
+   - Connect to USB.
+   - Enter bootloader mode with `Mod+macro1` (keyboard should show as a USB drive).
+   - Copy `left.uf2` to the drive (will disconnect automatically).
 
-> Note: There are also physical reset buttons on both keyboards which can be used to enter and exit the bootloader mode. Their location is described in section 2.7 on page 9 in the [User Manual](https://kinesis-ergo.com/wp-content/uploads/Advantage360-ZMK-KB360-PRO-Users-Manual-v3-10-23.pdf) and use is described in section 5.9 on page 14.
+3. **Prepare Right Side**:
+   - Power on the left side, then connect the right side to USB.
+   - Enter bootloader mode with `Mod+macro3`.
+   - Copy `right.uf2` to the drive.
 
-> Note: Some operating systems wont always treat the drive as ejected after the settings-reset file is flashed or may throw a spurious error, this doesn't mean that the flashing process has failed.
+4. **Finalize**: Unplug all devices, power cycle them, and enjoy your keyboard!
 
-## Other support
+> **Note**: Use the reset buttons to toggle bootloader mode as described in the [User Manual](https://kinesis-ergo.com/wp-content/uploads/Advantage360-ZMK-KB360-PRO-Users-Manual-v3-10-23.pdf).
 
-Further support resources can be found on Kinesis.com:
+> **Note**: Some OS may not indicate successful ejection post flashing. This does not imply failure.
 
-* <https://github.com/KinesisCorporation/Adv360-Pro-ZMK>
-* <https://kinesis-ergo.com/support/kb360pro/#firmware-updates>
-* <https://kinesis-ergo.com/support/kb360pro/#manuals>
+## Troubleshooting
 
-In the event of a hardware issue it may be necessary to open a support ticket directly with Kinesis as opposed to a GitHub issue in this repository.
+- **Drive Not Ejected**: If the OS doesn't eject the drive after flashing, manually check the connection and try again.
 
-* <https://kinesis-ergo.com/support/kb360pro/#ticket>
+## Other Support
+
+- [GitHub Repository](https://github.com/KinesisCorporation/Adv360-Pro-ZMK)
+- [Firmware Updates](https://kinesis-ergo.com/support/kb360pro/#firmware-updates)
+- [User Manuals](https://kinesis-ergo.com/support/kb360pro/#manuals)
+
+For hardware issues, open a [support ticket](https://kinesis-ergo.com/support/kb360pro/#ticket) with Kinesis.
